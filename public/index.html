@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ReelTime - Movie Ticket Booking</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <header class="navbar">
+    <a class="brand" id="brand">🎬 Reel<span>Time</span></a>
+    <nav>
+      <button id="navMovies">Movies</button>
+      <button id="navBookings">My Bookings</button>
+      <a class="btn" id="navAdmin" href="admin.html" hidden>Admin</a>
+      <span id="navUser" hidden></span>
+      <button id="navLogin" class="btn-primary">Login / Register</button>
+      <button id="navLogout" hidden>Logout</button>
+    </nav>
+  </header>
+
+  <main>
+    <div id="toast" class="toast" hidden></div>
+
+    <!-- MOVIES -->
+    <section id="view-movies">
+      <h1>Now Showing</h1>
+      <form class="search-bar" id="searchForm">
+        <input type="text" id="searchInput" placeholder="Search movie by title..." />
+        <select id="genreSelect">
+          <option value="">All Genres</option>
+          <option>Action</option>
+          <option>Animation</option>
+          <option>Comedy</option>
+          <option>Drama</option>
+          <option>Romance</option>
+          <option>Sci-Fi</option>
+          <option>Thriller</option>
+        </select>
+        <button type="submit" class="btn-primary">Search</button>
+      </form>
+      <div id="movieGrid" class="movie-grid"></div>
+    </section>
+
+    <!-- SHOWS -->
+    <section id="view-shows" hidden>
+      <button id="backToMovies">← Back to movies</button>
+      <h2 id="showsTitle" style="margin-top:14px"></h2>
+      <p class="muted" id="showsInfo"></p>
+      <div id="showList" class="show-list"></div>
+    </section>
+
+    <!-- SEATS -->
+    <section id="view-seats" hidden>
+      <button id="backToShows">← Back to shows</button>
+      <h2 id="seatsTitle" style="margin-top:14px"></h2>
+      <p class="muted" id="seatsInfo"></p>
+
+      <div class="screen"></div>
+      <div class="screen-label">SCREEN THIS WAY</div>
+      <div id="seatMap" class="seat-map"></div>
+
+      <div class="legend">
+        <span><i style="background:#2d4a6b"></i>Regular</span>
+        <span><i style="background:#7a5a14"></i>Premium</span>
+        <span><i style="background:var(--ok)"></i>Selected</span>
+        <span><i style="background:#3a3a48"></i>Booked</span>
+      </div>
+
+      <div class="panel booking-bar">
+        <div>
+          <div>Seats: <strong id="selSeats">-</strong></div>
+          <div>Estimated total: <strong id="selTotal">₹0</strong>
+            <span class="muted">(final price is calculated by the server)</span></div>
+        </div>
+        <button id="bookBtn" class="btn-primary" disabled>Book Selected Seats</button>
+      </div>
+
+      <div id="confirmBox" class="confirm-box" hidden></div>
+    </section>
+
+    <!-- MY BOOKINGS -->
+    <section id="view-bookings" hidden>
+      <h1>My Bookings</h1>
+      <div id="bookingList"></div>
+    </section>
+
+    <!-- AUTH -->
+    <section id="view-auth" hidden>
+      <div class="panel auth-box">
+        <div class="tabs">
+          <button id="tabLogin" class="active">Login</button>
+          <button id="tabRegister">Register</button>
+        </div>
+
+        <form id="loginForm">
+          <label for="loginEmail">Email</label>
+          <input type="email" id="loginEmail" required />
+          <label for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" required />
+          <button type="submit" class="btn-primary">Login</button>
+        </form>
+
+        <form id="registerForm" hidden>
+          <label for="regName">Full Name</label>
+          <input type="text" id="regName" required />
+          <label for="regEmail">Email</label>
+          <input type="email" id="regEmail" required />
+          <label for="regPassword">Password (min 6 characters)</label>
+          <input type="password" id="regPassword" minlength="6" required />
+          <button type="submit" class="btn-primary">Create Account</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

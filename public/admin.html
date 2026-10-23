@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ReelTime - Admin</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <header class="navbar">
+    <a class="brand" href="index.html">🎬 Reel<span>Time</span> <small class="muted">Admin</small></a>
+    <nav>
+      <a class="btn" href="index.html">Back to site</a>
+      <button id="logoutBtn" hidden>Logout</button>
+    </nav>
+  </header>
+
+  <main>
+    <div id="toast" class="toast" hidden></div>
+
+    <!-- Admin login -->
+    <section id="loginSection" hidden>
+      <div class="panel auth-box">
+        <h2>Admin Login</h2>
+        <form id="adminLoginForm">
+          <label for="aEmail">Email</label>
+          <input type="email" id="aEmail" required />
+          <label for="aPassword">Password</label>
+          <input type="password" id="aPassword" required />
+          <button type="submit" class="btn-primary">Login</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Dashboard -->
+    <section id="dashboard" hidden>
+      <h1>Dashboard</h1>
+      <div class="stats" id="stats"></div>
+
+      <div class="admin-grid">
+        <div class="panel">
+          <h2>Add Movie</h2>
+          <form id="movieForm">
+            <label for="mTitle">Title</label>
+            <input id="mTitle" required />
+            <label for="mGenre">Genre</label>
+            <select id="mGenre" required>
+              <option>Action</option><option>Animation</option><option>Comedy</option>
+              <option>Drama</option><option>Romance</option><option>Sci-Fi</option><option>Thriller</option>
+            </select>
+            <label for="mDuration">Duration (minutes)</label>
+            <input id="mDuration" type="number" min="1" />
+            <label for="mPoster">Poster URL (optional)</label>
+            <input id="mPoster" type="url" placeholder="https://..." />
+            <label for="mDesc">Description</label>
+            <textarea id="mDesc" rows="3"></textarea>
+            <button type="submit" class="btn-primary">Add Movie</button>
+          </form>
+        </div>
+
+        <div class="panel">
+          <h2>Create Show</h2>
+          <form id="showForm">
+            <label for="sMovie">Movie</label>
+            <select id="sMovie" required></select>
+            <label for="sTime">Show date & time</label>
+            <input id="sTime" type="datetime-local" required />
+            <label for="sRegular">Regular seat price (₹)</label>
+            <input id="sRegular" type="number" min="1" value="150" required />
+            <label for="sPremium">Premium seat price (₹)</label>
+            <input id="sPremium" type="number" min="1" value="250" required />
+            <p class="muted" style="margin-top:10px">48 seats (A–F × 1–8) are created automatically.</p>
+            <button type="submit" class="btn-primary">Create Show</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>Visible Movies</h2>
+        <div style="overflow-x:auto">
+          <table>
+            <thead><tr><th>ID</th><th>Title</th><th>Genre</th><th>Action</th></tr></thead>
+            <tbody id="movieRows"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>
