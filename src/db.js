@@ -7,6 +7,10 @@ const pool = new Pool({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME || 'movie_booking',
   max: 10,
+  ssl: {
+    require: true,
+    rejectUnauthorized: false
+  },
 });
 
 pool.on('error', (err) => {
